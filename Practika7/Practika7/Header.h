@@ -28,7 +28,6 @@ public:
 	int Num_s; //номер нужного садика
 	String^ Name;
 	String^ Raion;
-	//String^ Status; //убрать??
 	People() {
 		Name = Raion = ""; Num_s = Vozrast = 0;
 	}
@@ -43,5 +42,79 @@ public:
 	}
 };
 
+public value class myPredicate {
+	int intWhat;
+	String^ stringWhat;
+public:
+	myPredicate(int iW, String^ sW) {
+		this->intWhat = iW;
+		this->stringWhat = sW;
+	}
 
-void Look()
+	bool isRaionAndVozrast(Sadik^ S) {
+		if (this->stringWhat->CompareTo(S->Ra) == 0) {
+			switch (intWhat) {
+			case 3:
+				if (S->Colvo_3 != 0)
+					return true;
+				else
+					return false;
+			case 4:
+				if (S->Colvo_4 != 0)
+					return true;
+				else
+					return false;
+			case 5:
+				if (S->Colvo_5 != 0)
+					return true;
+				else
+					return false;
+			case 6:
+				if (S->Colvo_6 != 0)
+					return true;
+				else
+					return false;
+			default:
+				break;
+			}
+		}
+	}
+};
+
+void Look(System::Collections::Generic::List <People^>^ LIST, System::Windows::Forms::DataGridView^ DGV) {
+	DGV->RowCount = 1;
+	LIST->Sort();
+	for each (People ^ el in LIST) {
+		DGV->Rows->Add(el->Name, el->Vozrast, el->Raion, el->Num_s);
+	}
+}
+
+void Look(System::Collections::Generic::List <Sadik^>^ LIST, People ^ P, System::Windows::Forms::DataGridView^ DGV) {
+	DGV->RowCount = 1;
+	LIST->Sort();
+	myPredicate predicate(P->Vozrast, P->Raion);
+	System::Collections::Generic::List <Sadik^>^ LIST2 = gcnew System::Collections::Generic::List <Sadik^>(LIST->FindAll(gcnew Predicate <Sadik^>(predicate, &myPredicate::isRaionAndVozrast)));
+	for each (Sadik ^ el in LIST2) {
+		switch (P->Vozrast)
+		{
+		case 3:
+			DGV->Rows->Add(el->Num, el->Colvo_3);
+		case 4:
+			DGV->Rows->Add(el->Num, el->Colvo_4);
+		case 5:
+			DGV->Rows->Add(el->Num, el->Colvo_5);
+		case 6:
+			DGV->Rows->Add(el->Num, el->Colvo_6);
+		default:
+			break;
+		}
+	}
+}
+
+void readFromFile(System::IO::StreamReader^, System::Collections::Generic::List <People^>^);
+
+void readFromFile(System::IO::StreamReader^, System::Collections::Generic::List <Sadik^>^);
+
+void writeToFile(System::IO::StreamWriter^, System::Collections::Generic::List <People^>^);
+
+void writeToFile(System::IO::StreamWriter^, System::Collections::Generic::List <People^>^);

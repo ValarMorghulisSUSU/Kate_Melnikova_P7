@@ -22,6 +22,8 @@ namespace Practika7 {
 		System::Collections::Generic::Queue <People^>^ QueueChildren;
 		System::Collections::Generic::List <People^>^ ListChildren;
 		System::Collections::Generic::List <People^>^ AllowChildren;
+		System::Collections::Generic::List <Sadik^>^ ListSadik;
+		System::Collections::Generic::List <People^>^ DenyChildren;
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::ComboBox^ comboBox4;
 	private: System::Windows::Forms::ComboBox^ comboBox5;
@@ -35,8 +37,9 @@ namespace Practika7 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+	private: System::Windows::Forms::RadioButton^ radioButton1;
+	private: System::Windows::Forms::RadioButton^ radioButton2;
 	private: System::Windows::Forms::GroupBox^ groupBox3;
-		   System::Collections::Generic::List <People^>^ DenyChildren;
 	public:
 		MyForm(void)
 		{
@@ -124,6 +127,10 @@ namespace Practika7 {
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->comboBox3 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
@@ -137,10 +144,8 @@ namespace Practika7 {
 			this->базаToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
@@ -169,7 +174,7 @@ namespace Practika7 {
 				static_cast<System::Byte>(204)));
 			this->groupBox1->Location = System::Drawing::Point(499, 157);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(461, 253);
+			this->groupBox1->Size = System::Drawing::Size(469, 253);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Вакантные места";
@@ -181,7 +186,7 @@ namespace Practika7 {
 			this->label7->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label7->Location = System::Drawing::Point(236, 19);
+			this->label7->Location = System::Drawing::Point(246, 19);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(211, 17);
 			this->label7->TabIndex = 35;
@@ -191,7 +196,7 @@ namespace Practika7 {
 			// 
 			this->comboBox4->FormattingEnabled = true;
 			this->comboBox4->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"3", L"4", L"5", L"6" });
-			this->comboBox4->Location = System::Drawing::Point(345, 101);
+			this->comboBox4->Location = System::Drawing::Point(355, 101);
 			this->comboBox4->Name = L"comboBox4";
 			this->comboBox4->Size = System::Drawing::Size(105, 25);
 			this->comboBox4->TabIndex = 34;
@@ -200,7 +205,7 @@ namespace Practika7 {
 			// 
 			this->comboBox5->FormattingEnabled = true;
 			this->comboBox5->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"124", L"257", L"29", L"436", L"75", L"315" });
-			this->comboBox5->Location = System::Drawing::Point(345, 132);
+			this->comboBox5->Location = System::Drawing::Point(355, 132);
 			this->comboBox5->Name = L"comboBox5";
 			this->comboBox5->Size = System::Drawing::Size(105, 25);
 			this->comboBox5->TabIndex = 33;
@@ -210,7 +215,7 @@ namespace Practika7 {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(278, 73);
+			this->label3->Location = System::Drawing::Point(288, 73);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(50, 17);
 			this->label3->TabIndex = 32;
@@ -223,7 +228,7 @@ namespace Practika7 {
 				L"Ленинский", L"Советский", L"Центральный", L"Калининский",
 					L"Курчатовский", L"Металлургический", L"Тракторозавоский"
 			});
-			this->comboBox6->Location = System::Drawing::Point(345, 70);
+			this->comboBox6->Location = System::Drawing::Point(355, 70);
 			this->comboBox6->Name = L"comboBox6";
 			this->comboBox6->Size = System::Drawing::Size(105, 25);
 			this->comboBox6->TabIndex = 27;
@@ -233,7 +238,7 @@ namespace Practika7 {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label4->Location = System::Drawing::Point(253, 135);
+			this->label4->Location = System::Drawing::Point(263, 135);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(75, 17);
 			this->label4->TabIndex = 31;
@@ -244,7 +249,7 @@ namespace Practika7 {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label5->Location = System::Drawing::Point(267, 104);
+			this->label5->Location = System::Drawing::Point(277, 104);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(61, 17);
 			this->label5->TabIndex = 30;
@@ -252,7 +257,7 @@ namespace Practika7 {
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(345, 42);
+			this->textBox2->Location = System::Drawing::Point(355, 42);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(105, 23);
 			this->textBox2->TabIndex = 29;
@@ -262,7 +267,7 @@ namespace Practika7 {
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label6->Location = System::Drawing::Point(260, 45);
+			this->label6->Location = System::Drawing::Point(270, 45);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(68, 17);
 			this->label6->TabIndex = 28;
@@ -272,7 +277,7 @@ namespace Practika7 {
 			// 
 			this->button4->BackColor = System::Drawing::Color::MintCream;
 			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button4->Location = System::Drawing::Point(239, 219);
+			this->button4->Location = System::Drawing::Point(249, 219);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(211, 28);
 			this->button4->TabIndex = 26;
@@ -284,7 +289,7 @@ namespace Practika7 {
 			// 
 			this->button3->BackColor = System::Drawing::Color::MintCream;
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button3->Location = System::Drawing::Point(239, 175);
+			this->button3->Location = System::Drawing::Point(249, 175);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(211, 28);
 			this->button3->TabIndex = 25;
@@ -303,7 +308,6 @@ namespace Practika7 {
 			this->dataGridView2->Name = L"dataGridView2";
 			this->dataGridView2->Size = System::Drawing::Size(221, 205);
 			this->dataGridView2->TabIndex = 12;
-			this->dataGridView2->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView2_CellContentClick);
 			// 
 			// Column6
 			// 
@@ -350,6 +354,37 @@ namespace Practika7 {
 			this->dataGridView1->Size = System::Drawing::Size(469, 361);
 			this->dataGridView1->TabIndex = 0;
 			// 
+			// Column1
+			// 
+			this->Column1->Frozen = true;
+			this->Column1->HeaderText = L"Фамилия";
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Width = 120;
+			// 
+			// Column2
+			// 
+			this->Column2->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::AllCells;
+			this->Column2->Frozen = true;
+			this->Column2->HeaderText = L"Возраст";
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			this->Column2->Width = 86;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"Район";
+			this->Column5->Name = L"Column5";
+			this->Column5->ReadOnly = true;
+			this->Column5->Width = 115;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"№ сада";
+			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			this->Column3->Width = 75;
+			// 
 			// groupBox2
 			// 
 			this->groupBox2->Controls->Add(this->comboBox3);
@@ -363,7 +398,7 @@ namespace Practika7 {
 			this->groupBox2->Controls->Add(this->label18);
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->groupBox2->Location = System::Drawing::Point(499, 28);
+			this->groupBox2->Location = System::Drawing::Point(609, 37);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(359, 114);
 			this->groupBox2->TabIndex = 4;
@@ -408,7 +443,6 @@ namespace Practika7 {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(105, 25);
 			this->comboBox1->TabIndex = 16;
-			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::comboBox1_SelectedIndexChanged);
 			// 
 			// button1
 			// 
@@ -418,7 +452,7 @@ namespace Practika7 {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(335, 29);
 			this->button1->TabIndex = 22;
-			this->button1->Text = L"Добавить ";
+			this->button1->Text = L"text";
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -470,7 +504,7 @@ namespace Practika7 {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->базаToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(972, 25);
+			this->menuStrip1->Size = System::Drawing::Size(978, 25);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -486,42 +520,41 @@ namespace Practika7 {
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Очередь";
 			// 
-			// Column1
+			// radioButton1
 			// 
-			this->Column1->Frozen = true;
-			this->Column1->HeaderText = L"Фамилия";
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->Width = 120;
+			this->radioButton1->AutoSize = true;
+			this->radioButton1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->radioButton1->Location = System::Drawing::Point(497, 37);
+			this->radioButton1->Name = L"radioButton1";
+			this->radioButton1->Size = System::Drawing::Size(106, 21);
+			this->radioButton1->TabIndex = 6;
+			this->radioButton1->TabStop = true;
+			this->radioButton1->Text = L"Пользователь";
+			this->radioButton1->UseVisualStyleBackColor = true;
+			this->radioButton1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::radioButton1_CheckedChanged);
 			// 
-			// Column2
+			// radioButton2
 			// 
-			this->Column2->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::AllCells;
-			this->Column2->Frozen = true;
-			this->Column2->HeaderText = L"Возраст";
-			this->Column2->Name = L"Column2";
-			this->Column2->ReadOnly = true;
-			this->Column2->Width = 86;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"Район";
-			this->Column5->Name = L"Column5";
-			this->Column5->ReadOnly = true;
-			this->Column5->Width = 115;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"№ сада";
-			this->Column3->Name = L"Column3";
-			this->Column3->ReadOnly = true;
-			this->Column3->Width = 75;
+			this->radioButton2->AutoSize = true;
+			this->radioButton2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->radioButton2->Location = System::Drawing::Point(497, 59);
+			this->radioButton2->Name = L"radioButton2";
+			this->radioButton2->Size = System::Drawing::Size(67, 21);
+			this->radioButton2->TabIndex = 7;
+			this->radioButton2->TabStop = true;
+			this->radioButton2->Text = L"Админ";
+			this->radioButton2->UseVisualStyleBackColor = true;
+			this->radioButton2->CheckedChanged += gcnew System::EventHandler(this, &MyForm::radioButton2_CheckedChanged);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(972, 428);
+			this->ClientSize = System::Drawing::Size(978, 428);
+			this->Controls->Add(this->radioButton2);
+			this->Controls->Add(this->radioButton1);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
@@ -553,6 +586,7 @@ namespace Practika7 {
 				this->comboBox2->Text, Convert::ToInt32(this->comboBox2->Text);
 			this->ListChildren->Add(Tmp);
 			this->QueueChildren->Enqueue(Tmp);
+			Look(ListChildren, dataGridView1);
 		}
 		catch (...)
 		{
@@ -560,7 +594,7 @@ namespace Practika7 {
 				MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}	
-	//Одобрить
+	//Рассмотреть заявку
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (B->Del_m(A->Get_B(A->H())->Num, A->Get_B(A->H())->V)) {
 			People^ p = gcnew People();
@@ -577,8 +611,10 @@ namespace Practika7 {
 			MessageBox::Show("Заявка не может быть одобрена. Так как для данной возрастной группы места закончились.","Ошибка запроса.", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			button4_Click(sender, e);
 		}
+
+
 	}
-	//Отказать
+	//Перенаправить ребенка
 	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
 		People^ p = gcnew People();
 		A->Pop(p);
@@ -665,7 +701,18 @@ namespace Practika7 {
 		B->Poisk(A->Get_B(A->H())->R, A->Get_B(A->H())->V,dataGridView2);
 	}
 
-private: System::Void dataGridView2_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+
+private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (this->radioButton1->Checked) {
+		this->groupBox1->Enabled = false;
+		this->button1->Text = "Подать заявку";
+	}
+}
+private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (this->radioButton2->Checked) {
+		this->groupBox1->Enabled = false;
+		this->button1->Text = "Добавить заявку";
+	}
 }
 };
 }
