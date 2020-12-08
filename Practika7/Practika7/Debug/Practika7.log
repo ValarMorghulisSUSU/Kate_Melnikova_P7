@@ -1,0 +1,10 @@
+﻿  MyForm.cpp
+F:\C++ projects\MONEY\Practika7\Practika7\Header.h(105,10): warning C4101: Т: неиспользованная локальная переменная
+F:\C++ projects\MONEY\Practika7\Practika7\MyForm1.h(19,10): warning C4677: MyForm1: сигнатура члена, не являющегося частным, содержит частный тип сборки "Children"
+F:\C++ projects\MONEY\Practika7\Practika7\Header.h(210): message : см. объявление "Children"
+F:\C++ projects\MONEY\Practika7\Practika7\MyForm1.h(184,20): warning C4553: "==": результат выражения не используется; вы хотели использовать "="?
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Создание кода...
+F:\C++ projects\MONEY\Practika7\Practika7\Header.h(143): warning C4715: Sadiki::Del_m: значение возвращается не при всех путях выполнения
+  MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  Practika7.vcxproj -> F:\C++ projects\MONEY\Practika7\Debug\Practika7.exe

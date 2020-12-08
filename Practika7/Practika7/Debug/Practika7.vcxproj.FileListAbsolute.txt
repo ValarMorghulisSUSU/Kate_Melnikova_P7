@@ -1,0 +1,15 @@
+C:\Users\Asus\Desktop\Котенок\ООП\Practika7\Practika7\Debug\Practika7.vcxprojAssemblyReference.cache
+C:\Users\Asus\Desktop\Котенок\ООП\Practika7\Practika7\Debug\Practika7.MyForm.resources
+C:\Users\Asus\Desktop\Котенок\ООП\Practika7\Practika7\Debug\Practika7.vcxproj.GenerateResource.cache
+E:\Practika7\Practika7\Debug\Practika7.vcxprojAssemblyReference.cache
+E:\Practika7\Practika7\Debug\Practika7.MyForm.resources
+E:\Practika7\Practika7\Debug\Practika7.vcxproj.GenerateResource.cache
+D:\Practika7\Practika7\Debug\Practika7.vcxprojAssemblyReference.cache
+D:\Practika7\Practika7\Debug\Practika7.MyForm.resources
+D:\Practika7\Practika7\Debug\Practika7.vcxproj.GenerateResource.cache
+D:\Practika7\Practika7\Debug\Practika7.MyForm1.resources
+E:\Practika7\Practika7\Debug\Practika7.MyForm1.resources
+F:\C++ projects\MONEY\Practika7\Practika7\Debug\Practika7.vcxprojAssemblyReference.cache
+F:\C++ projects\MONEY\Practika7\Practika7\Debug\Practika7.MyForm.resources
+F:\C++ projects\MONEY\Practika7\Practika7\Debug\Practika7.MyForm1.resources
+F:\C++ projects\MONEY\Practika7\Practika7\Debug\Practika7.vcxproj.GenerateResource.cache
