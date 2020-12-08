@@ -14,15 +14,17 @@ namespace Practika7 {
 	/// </summary>
 	public ref class MyForm1 : public System::Windows::Forms::Form
 	{
-		Children^ A;
+		System::Collections::Generic::List<People^>^ AC;
+		System::Collections::Generic::List<People^>^ DC;
 	public:
-		MyForm1(Children^ a)
+		MyForm1(System::Collections::Generic::List<People^>^ AC, System::Collections::Generic::List<People^>^ DC)
 		{
 			InitializeComponent();
 			//
 			//TODO: добавьте код конструктора
 			//
-			A = a;
+			this->AC = gcnew System::Collections::Generic::List<People^>(AC);
+			this->DC = gcnew System::Collections::Generic::List<People^>(DC);
 		}
 
 	protected:

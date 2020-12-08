@@ -1,6 +1,7 @@
 #pragma once
 #include "Header.h"
 #include "MyForm1.h"
+
 namespace Practika7 {
 
 	using namespace System;
@@ -17,9 +18,25 @@ namespace Practika7 {
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
-		Children^ A = gcnew Children();
 		MyForm1^ C;
-		Sadiki^ B;
+		System::Collections::Generic::Queue <People^>^ QueueChildren;
+		System::Collections::Generic::List <People^>^ ListChildren;
+		System::Collections::Generic::List <People^>^ AllowChildren;
+	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::ComboBox^ comboBox4;
+	private: System::Windows::Forms::ComboBox^ comboBox5;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::ComboBox^ comboBox6;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+	private: System::Windows::Forms::GroupBox^ groupBox3;
+		   System::Collections::Generic::List <People^>^ DenyChildren;
 	public:
 		MyForm(void)
 		{
@@ -27,9 +44,11 @@ namespace Practika7 {
 			//
 			//TODO: äîáàâüòå êîä êîíñòðóêòîðà
 			//
-			A = gcnew Children();
-			B = gcnew Sadiki();
-			C = gcnew MyForm1(A);
+			this->QueueChildren = gcnew System::Collections::Generic::Queue <People^>(1);
+			this->ListChildren = gcnew System::Collections::Generic::List <People^>();
+			this->AllowChildren = gcnew System::Collections::Generic::List <People^>();
+			this->DenyChildren = gcnew System::Collections::Generic::List <People^>();
+			this->C = gcnew MyForm1(this->AllowChildren, this->DenyChildren);
 		}
 
 	protected:
@@ -46,12 +65,12 @@ namespace Practika7 {
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	protected:
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
-	private: System::Windows::Forms::Label^ label1;
+
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+
+
+
+
 	private: System::Windows::Forms::Label^ label14;
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 
@@ -88,6 +107,15 @@ namespace Practika7 {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->comboBox4 = (gcnew System::Windows::Forms::ComboBox());
+			this->comboBox5 = (gcnew System::Windows::Forms::ComboBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->comboBox6 = (gcnew System::Windows::Forms::ComboBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
@@ -96,11 +124,6 @@ namespace Practika7 {
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->comboBox3 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
@@ -113,45 +136,160 @@ namespace Practika7 {
 			this->label18 = (gcnew System::Windows::Forms::Label());
 			this->áàçàToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox2->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
+			this->groupBox3->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->label7);
+			this->groupBox1->Controls->Add(this->comboBox4);
+			this->groupBox1->Controls->Add(this->comboBox5);
+			this->groupBox1->Controls->Add(this->label3);
+			this->groupBox1->Controls->Add(this->comboBox6);
+			this->groupBox1->Controls->Add(this->label4);
+			this->groupBox1->Controls->Add(this->label5);
+			this->groupBox1->Controls->Add(this->textBox2);
+			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->button4);
 			this->groupBox1->Controls->Add(this->button3);
 			this->groupBox1->Controls->Add(this->dataGridView2);
 			this->groupBox1->Controls->Add(this->label14);
 			this->groupBox1->Controls->Add(this->label2);
-			this->groupBox1->Location = System::Drawing::Point(461, 163);
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->groupBox1->Location = System::Drawing::Point(499, 157);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(282, 257);
+			this->groupBox1->Size = System::Drawing::Size(461, 253);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Âàêàíòíûå ìåñòà";
 			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->BackColor = System::Drawing::Color::White;
+			this->label7->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label7->Location = System::Drawing::Point(236, 19);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(211, 17);
+			this->label7->TabIndex = 35;
+			this->label7->Text = L"        Ðåáåíîê èç î÷åðåäè         ";
+			// 
+			// comboBox4
+			// 
+			this->comboBox4->FormattingEnabled = true;
+			this->comboBox4->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"3", L"4", L"5", L"6" });
+			this->comboBox4->Location = System::Drawing::Point(345, 101);
+			this->comboBox4->Name = L"comboBox4";
+			this->comboBox4->Size = System::Drawing::Size(105, 25);
+			this->comboBox4->TabIndex = 34;
+			// 
+			// comboBox5
+			// 
+			this->comboBox5->FormattingEnabled = true;
+			this->comboBox5->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"124", L"257", L"29", L"436", L"75", L"315" });
+			this->comboBox5->Location = System::Drawing::Point(345, 132);
+			this->comboBox5->Name = L"comboBox5";
+			this->comboBox5->Size = System::Drawing::Size(105, 25);
+			this->comboBox5->TabIndex = 33;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label3->Location = System::Drawing::Point(278, 73);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(50, 17);
+			this->label3->TabIndex = 32;
+			this->label3->Text = L"Ðàéîí";
+			// 
+			// comboBox6
+			// 
+			this->comboBox6->FormattingEnabled = true;
+			this->comboBox6->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
+				L"Ëåíèíñêèé", L"Ñîâåòñêèé", L"Öåíòðàëüíûé", L"Êàëèíèíñêèé",
+					L"Êóð÷àòîâñêèé", L"Ìåòàëëóðãè÷åñêèé", L"Òðàêòîðîçàâîñêèé"
+			});
+			this->comboBox6->Location = System::Drawing::Point(345, 70);
+			this->comboBox6->Name = L"comboBox6";
+			this->comboBox6->Size = System::Drawing::Size(105, 25);
+			this->comboBox6->TabIndex = 27;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label4->Location = System::Drawing::Point(253, 135);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(75, 17);
+			this->label4->TabIndex = 31;
+			this->label4->Text = L"¹ ñàäèêà";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label5->Location = System::Drawing::Point(267, 104);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(61, 17);
+			this->label5->TabIndex = 30;
+			this->label5->Text = L"Âîçðàñò";
+			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(345, 42);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(105, 23);
+			this->textBox2->TabIndex = 29;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label6->Location = System::Drawing::Point(260, 45);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(68, 17);
+			this->label6->TabIndex = 28;
+			this->label6->Text = L"Ôàìèëèÿ";
+			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(143, 226);
+			this->button4->BackColor = System::Drawing::Color::MintCream;
+			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button4->Location = System::Drawing::Point(239, 219);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(109, 23);
+			this->button4->Size = System::Drawing::Size(211, 28);
 			this->button4->TabIndex = 26;
-			this->button4->Text = L"Îòêàçàòü";
-			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Text = L"Ïåðåíàïðàâèòü ðåáåíêà";
+			this->button4->UseVisualStyleBackColor = false;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(31, 226);
+			this->button3->BackColor = System::Drawing::Color::MintCream;
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button3->Location = System::Drawing::Point(239, 175);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(109, 23);
+			this->button3->Size = System::Drawing::Size(211, 28);
 			this->button3->TabIndex = 25;
-			this->button3->Text = L"Îäîáðèòü";
-			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Text = L"Ðàññìîòðåòü çàÿâêó";
+			this->button3->UseVisualStyleBackColor = false;
 			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 			// 
 			// dataGridView2
@@ -161,10 +299,11 @@ namespace Practika7 {
 				this->Column6,
 					this->Column7
 			});
-			this->dataGridView2->Location = System::Drawing::Point(31, 42);
+			this->dataGridView2->Location = System::Drawing::Point(12, 42);
 			this->dataGridView2->Name = L"dataGridView2";
-			this->dataGridView2->Size = System::Drawing::Size(221, 178);
+			this->dataGridView2->Size = System::Drawing::Size(221, 205);
 			this->dataGridView2->TabIndex = 12;
+			this->dataGridView2->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridView2_CellContentClick);
 			// 
 			// Column6
 			// 
@@ -181,18 +320,22 @@ namespace Practika7 {
 			// label14
 			// 
 			this->label14->AutoSize = true;
-			this->label14->Location = System::Drawing::Point(41, 26);
+			this->label14->BackColor = System::Drawing::Color::White;
+			this->label14->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->label14->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label14->Location = System::Drawing::Point(9, 19);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(41, 13);
+			this->label14->Size = System::Drawing::Size(222, 17);
 			this->label14->TabIndex = 11;
-			this->label14->Text = L"Ðàéîí:";
+			this->label14->Text = L"  Ñàäèêè â âûáðàííîì ðàéîíå  ";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(88, 26);
+			this->label2->Location = System::Drawing::Point(69, 26);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(0, 13);
+			this->label2->Size = System::Drawing::Size(0, 17);
 			this->label2->TabIndex = 0;
 			// 
 			// dataGridView1
@@ -202,10 +345,146 @@ namespace Practika7 {
 				this->Column1,
 					this->Column2, this->Column5, this->Column3
 			});
-			this->dataGridView1->Location = System::Drawing::Point(12, 43);
+			this->dataGridView1->Location = System::Drawing::Point(6, 16);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(426, 377);
+			this->dataGridView1->Size = System::Drawing::Size(469, 361);
 			this->dataGridView1->TabIndex = 0;
+			// 
+			// groupBox2
+			// 
+			this->groupBox2->Controls->Add(this->comboBox3);
+			this->groupBox2->Controls->Add(this->comboBox2);
+			this->groupBox2->Controls->Add(this->label29);
+			this->groupBox2->Controls->Add(this->comboBox1);
+			this->groupBox2->Controls->Add(this->button1);
+			this->groupBox2->Controls->Add(this->label20);
+			this->groupBox2->Controls->Add(this->label19);
+			this->groupBox2->Controls->Add(this->textBox1);
+			this->groupBox2->Controls->Add(this->label18);
+			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->groupBox2->Location = System::Drawing::Point(499, 28);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(359, 114);
+			this->groupBox2->TabIndex = 4;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Äîáàâèòü çàÿâêó";
+			// 
+			// comboBox3
+			// 
+			this->comboBox3->FormattingEnabled = true;
+			this->comboBox3->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"3", L"4", L"5", L"6" });
+			this->comboBox3->Location = System::Drawing::Point(275, 22);
+			this->comboBox3->Name = L"comboBox3";
+			this->comboBox3->Size = System::Drawing::Size(72, 25);
+			this->comboBox3->TabIndex = 26;
+			// 
+			// comboBox2
+			// 
+			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"124", L"257", L"29", L"436", L"75", L"315" });
+			this->comboBox2->Location = System::Drawing::Point(275, 49);
+			this->comboBox2->Name = L"comboBox2";
+			this->comboBox2->Size = System::Drawing::Size(72, 25);
+			this->comboBox2->TabIndex = 25;
+			// 
+			// label29
+			// 
+			this->label29->AutoSize = true;
+			this->label29->Location = System::Drawing::Point(9, 52);
+			this->label29->Name = L"label29";
+			this->label29->Size = System::Drawing::Size(50, 17);
+			this->label29->TabIndex = 24;
+			this->label29->Text = L"Ðàéîí";
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
+				L"Ëåíèíñêèé", L"Ñîâåòñêèé", L"Öåíòðàëüíûé", L"Êàëèíèíñêèé",
+					L"Êóð÷àòîâñêèé", L"Ìåòàëëóðãè÷åñêèé", L"Òðàêòîðîçàâîñêèé"
+			});
+			this->comboBox1->Location = System::Drawing::Point(83, 49);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(105, 25);
+			this->comboBox1->TabIndex = 16;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::comboBox1_SelectedIndexChanged);
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::MintCream;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button1->Location = System::Drawing::Point(12, 77);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(335, 29);
+			this->button1->TabIndex = 22;
+			this->button1->Text = L"Äîáàâèòü ";
+			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// label20
+			// 
+			this->label20->AutoSize = true;
+			this->label20->Location = System::Drawing::Point(194, 52);
+			this->label20->Name = L"label20";
+			this->label20->Size = System::Drawing::Size(75, 17);
+			this->label20->TabIndex = 20;
+			this->label20->Text = L"¹ ñàäèêà";
+			// 
+			// label19
+			// 
+			this->label19->AutoSize = true;
+			this->label19->Location = System::Drawing::Point(194, 27);
+			this->label19->Name = L"label19";
+			this->label19->Size = System::Drawing::Size(61, 17);
+			this->label19->TabIndex = 18;
+			this->label19->Text = L"Âîçðàñò";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(83, 24);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(105, 23);
+			this->textBox1->TabIndex = 17;
+			// 
+			// label18
+			// 
+			this->label18->AutoSize = true;
+			this->label18->Location = System::Drawing::Point(9, 27);
+			this->label18->Name = L"label18";
+			this->label18->Size = System::Drawing::Size(68, 17);
+			this->label18->TabIndex = 16;
+			this->label18->Text = L"Ôàìèëèÿ";
+			// 
+			// áàçàToolStripMenuItem
+			// 
+			this->áàçàToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->áàçàToolStripMenuItem->Name = L"áàçàToolStripMenuItem";
+			this->áàçàToolStripMenuItem->Size = System::Drawing::Size(51, 21);
+			this->áàçàToolStripMenuItem->Text = L"Áàçà";
+			this->áàçàToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::áàçàToolStripMenuItem_Click);
+			// 
+			// menuStrip1
+			// 
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->áàçàToolStripMenuItem });
+			this->menuStrip1->Location = System::Drawing::Point(0, 0);
+			this->menuStrip1->Name = L"menuStrip1";
+			this->menuStrip1->Size = System::Drawing::Size(972, 25);
+			this->menuStrip1->TabIndex = 1;
+			this->menuStrip1->Text = L"menuStrip1";
+			// 
+			// groupBox3
+			// 
+			this->groupBox3->Controls->Add(this->dataGridView1);
+			this->groupBox3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->groupBox3->Location = System::Drawing::Point(12, 27);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(481, 383);
+			this->groupBox3->TabIndex = 5;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"Î÷åðåäü";
 			// 
 			// Column1
 			// 
@@ -217,11 +496,12 @@ namespace Practika7 {
 			// 
 			// Column2
 			// 
+			this->Column2->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::AllCells;
 			this->Column2->Frozen = true;
 			this->Column2->HeaderText = L"Âîçðàñò";
 			this->Column2->Name = L"Column2";
 			this->Column2->ReadOnly = true;
-			this->Column2->Width = 55;
+			this->Column2->Width = 86;
 			// 
 			// Column5
 			// 
@@ -237,141 +517,13 @@ namespace Practika7 {
 			this->Column3->ReadOnly = true;
 			this->Column3->Width = 75;
 			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(132, 27);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(173, 13);
-			this->label1->TabIndex = 3;
-			this->label1->Text = L"Îáùèé ñïèñîê çàÿâîê ïî ðàéîíó";
-			// 
-			// groupBox2
-			// 
-			this->groupBox2->Controls->Add(this->comboBox3);
-			this->groupBox2->Controls->Add(this->comboBox2);
-			this->groupBox2->Controls->Add(this->label29);
-			this->groupBox2->Controls->Add(this->comboBox1);
-			this->groupBox2->Controls->Add(this->button1);
-			this->groupBox2->Controls->Add(this->label20);
-			this->groupBox2->Controls->Add(this->label19);
-			this->groupBox2->Controls->Add(this->textBox1);
-			this->groupBox2->Controls->Add(this->label18);
-			this->groupBox2->Location = System::Drawing::Point(457, 43);
-			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(300, 106);
-			this->groupBox2->TabIndex = 4;
-			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Äîáàâèòü çàÿâêó";
-			// 
-			// comboBox3
-			// 
-			this->comboBox3->FormattingEnabled = true;
-			this->comboBox3->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"3", L"4", L"5", L"6" });
-			this->comboBox3->Location = System::Drawing::Point(239, 25);
-			this->comboBox3->Name = L"comboBox3";
-			this->comboBox3->Size = System::Drawing::Size(47, 21);
-			this->comboBox3->TabIndex = 26;
-			// 
-			// comboBox2
-			// 
-			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"124", L"257", L"29", L"436", L"75", L"315" });
-			this->comboBox2->Location = System::Drawing::Point(239, 50);
-			this->comboBox2->Name = L"comboBox2";
-			this->comboBox2->Size = System::Drawing::Size(47, 21);
-			this->comboBox2->TabIndex = 25;
-			// 
-			// label29
-			// 
-			this->label29->AutoSize = true;
-			this->label29->Location = System::Drawing::Point(12, 53);
-			this->label29->Name = L"label29";
-			this->label29->Size = System::Drawing::Size(38, 13);
-			this->label29->TabIndex = 24;
-			this->label29->Text = L"Ðàéîí";
-			// 
-			// comboBox1
-			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
-				L"Ëåíèíñêèé", L"Ñîâåòñêèé", L"Öåíòðàëüíûé", L"Êàëèíèíñêèé",
-					L"Êóð÷àòîâñêèé", L"Ìåòàëëóðãè÷åñêèé", L"Òðàêòîðîçàâîñêèé"
-			});
-			this->comboBox1->Location = System::Drawing::Point(70, 50);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(105, 21);
-			this->comboBox1->TabIndex = 16;
-			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::comboBox1_SelectedIndexChanged);
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(95, 77);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(105, 23);
-			this->button1->TabIndex = 22;
-			this->button1->Text = L"Äîáàâèòü ";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
-			// 
-			// label20
-			// 
-			this->label20->AutoSize = true;
-			this->label20->Location = System::Drawing::Point(181, 53);
-			this->label20->Name = L"label20";
-			this->label20->Size = System::Drawing::Size(57, 13);
-			this->label20->TabIndex = 20;
-			this->label20->Text = L"¹ ñàäèêà";
-			// 
-			// label19
-			// 
-			this->label19->AutoSize = true;
-			this->label19->Location = System::Drawing::Point(181, 28);
-			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(49, 13);
-			this->label19->TabIndex = 18;
-			this->label19->Text = L"Âîçðàñò";
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(70, 25);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(105, 20);
-			this->textBox1->TabIndex = 17;
-			// 
-			// label18
-			// 
-			this->label18->AutoSize = true;
-			this->label18->Location = System::Drawing::Point(9, 27);
-			this->label18->Name = L"label18";
-			this->label18->Size = System::Drawing::Size(56, 13);
-			this->label18->TabIndex = 16;
-			this->label18->Text = L"Ôàìèëèÿ";
-			// 
-			// áàçàToolStripMenuItem
-			// 
-			this->áàçàToolStripMenuItem->Name = L"áàçàToolStripMenuItem";
-			this->áàçàToolStripMenuItem->Size = System::Drawing::Size(43, 20);
-			this->áàçàToolStripMenuItem->Text = L"Áàçà";
-			this->áàçàToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::áàçàToolStripMenuItem_Click);
-			// 
-			// menuStrip1
-			// 
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->áàçàToolStripMenuItem });
-			this->menuStrip1->Location = System::Drawing::Point(0, 0);
-			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(765, 24);
-			this->menuStrip1->TabIndex = 1;
-			this->menuStrip1->Text = L"menuStrip1";
-			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(765, 428);
+			this->ClientSize = System::Drawing::Size(972, 428);
+			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
-			this->Controls->Add(this->label1);
-			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
@@ -387,6 +539,7 @@ namespace Practika7 {
 			this->groupBox2->PerformLayout();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
+			this->groupBox3->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -394,13 +547,18 @@ namespace Practika7 {
 #pragma endregion
 	//Äîáàâèòü
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		People^ T = gcnew People(textBox1->Text, Convert::ToInt32(comboBox3->Text), comboBox1->Text, Convert::ToInt32(comboBox2->Text),"Îáðàáîòêà");
-		A->Push(T);
-		A->Look(this->dataGridView1,1);
-		textBox1->Text = "";
-		comboBox1->Text = "";
-		comboBox2->Text = "";
-		comboBox3->Text = "";
+		try
+		{
+			People^ Tmp = gcnew People(this->textBox1->Text, Convert::ToInt16(this->comboBox3->Text),
+				this->comboBox2->Text, Convert::ToInt32(this->comboBox2->Text);
+			this->ListChildren->Add(Tmp);
+			this->QueueChildren->Enqueue(Tmp);
+		}
+		catch (...)
+		{
+			MessageBox::Show("Äàííûå ââåäåíû íåâåðíî, ëèáî íå ïîëíîñòüþ, ïðîâåðüòå.", "Îøèáêà", 
+				MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 	}	
 	//Îäîáðèòü
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -507,5 +665,7 @@ namespace Practika7 {
 		B->Poisk(A->Get_B(A->H())->R, A->Get_B(A->H())->V,dataGridView2);
 	}
 
+private: System::Void dataGridView2_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
 };
 }
