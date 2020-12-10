@@ -120,9 +120,11 @@ namespace Practika7 {
 			// 
 			this->groupBox1->Controls->Add(this->radioButton2);
 			this->groupBox1->Controls->Add(this->radioButton1);
-			this->groupBox1->Location = System::Drawing::Point(28, 12);
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->groupBox1->Location = System::Drawing::Point(28, 6);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(424, 40);
+			this->groupBox1->Size = System::Drawing::Size(424, 46);
 			this->groupBox1->TabIndex = 2;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Категория";
@@ -130,9 +132,9 @@ namespace Practika7 {
 			// radioButton2
 			// 
 			this->radioButton2->AutoSize = true;
-			this->radioButton2->Location = System::Drawing::Point(258, 14);
+			this->radioButton2->Location = System::Drawing::Point(258, 19);
 			this->radioButton2->Name = L"radioButton2";
-			this->radioButton2->Size = System::Drawing::Size(121, 17);
+			this->radioButton2->Size = System::Drawing::Size(134, 21);
 			this->radioButton2->TabIndex = 1;
 			this->radioButton2->TabStop = true;
 			this->radioButton2->Text = L"Отказаные заявки";
@@ -142,9 +144,9 @@ namespace Practika7 {
 			// radioButton1
 			// 
 			this->radioButton1->AutoSize = true;
-			this->radioButton1->Location = System::Drawing::Point(50, 14);
+			this->radioButton1->Location = System::Drawing::Point(50, 19);
 			this->radioButton1->Name = L"radioButton1";
-			this->radioButton1->Size = System::Drawing::Size(128, 17);
+			this->radioButton1->Size = System::Drawing::Size(148, 21);
 			this->radioButton1->TabIndex = 0;
 			this->radioButton1->TabStop = true;
 			this->radioButton1->Text = L"Одобренные заявки";

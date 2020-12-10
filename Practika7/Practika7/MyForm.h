@@ -596,7 +596,7 @@ namespace Practika7 {
 	}	
 	//Рассмотреть заявку
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (B->Del_m(A->Get_B(A->H())->Num, A->Get_B(A->H())->V)) {
+		/*if (B->Del_m(A->Get_B(A->H())->Num, A->Get_B(A->H())->V)) {
 			People^ p = gcnew People();
 
 			A->Pop(p);
@@ -610,7 +610,8 @@ namespace Practika7 {
 		else {
 			MessageBox::Show("Заявка не может быть одобрена. Так как для данной возрастной группы места закончились.","Ошибка запроса.", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			button4_Click(sender, e);
-		}
+		}*/
+
 
 
 	}
@@ -704,12 +705,23 @@ namespace Practika7 {
 
 private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (this->radioButton1->Checked) {
+		this->textBox2->Text = "";
+		this->dataGridView2->Rows->Clear();
+		this->comboBox6->Text= "";
+		this->comboBox4->Text = "";
+		this->comboBox5->Text = "";
 		this->groupBox1->Enabled = false;
 		this->button1->Text = "Подать заявку";
 	}
 }
 private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (this->radioButton2->Checked) {
+		People^ Tmp = QueueChildren->Peek();
+		this->textBox2->Text = Tmp->Name;
+		this->comboBox6->Text = Tmp->Raion;
+		this->comboBox4->Text = Convert::ToString(Tmp->Vozrast);
+		this->comboBox5->Text = Convert::ToString(Tmp->Num_s);
+		Look(this->ListSadik, Tmp, this->dataGridView2);
 		this->groupBox1->Enabled = false;
 		this->button1->Text = "Добавить заявку";
 	}

@@ -50,7 +50,9 @@ public:
 		this->intWhat = iW;
 		this->stringWhat = sW;
 	}
-
+	bool isSadik(Sadik^ S) {
+		if (this->intWhat == S->Num)
+	}
 	bool isRaionAndVozrast(Sadik^ S) {
 		if (this->stringWhat->CompareTo(S->Ra) == 0) {
 			switch (intWhat) {
@@ -111,10 +113,18 @@ void Look(System::Collections::Generic::List <Sadik^>^ LIST, People ^ P, System:
 	}
 }
 
-void readFromFile(System::IO::StreamReader^, System::Collections::Generic::List <People^>^);
+void readFromFile(System::IO::StreamReader^, System::Collections::Generic::List <People^>^) {
 
-void readFromFile(System::IO::StreamReader^, System::Collections::Generic::List <Sadik^>^);
+}
 
-void writeToFile(System::IO::StreamWriter^, System::Collections::Generic::List <People^>^);
+void readFromFile(System::IO::StreamReader^, System::Collections::Generic::List <Sadik^>^) {
 
-void writeToFile(System::IO::StreamWriter^, System::Collections::Generic::List <People^>^);
+}
+
+void writeToFile(System::IO::StreamWriter^, System::Collections::Generic::List <People^>^) {
+
+}
+
+void writeToFile(System::IO::StreamWriter^, System::Collections::Generic::List <People^>^) {
+
+}
