@@ -13,3 +13,7 @@ F:\C++ projects\MONEY\Practika7\Practika7\Debug\Practika7.vcxprojAssemblyReferen
 F:\C++ projects\MONEY\Practika7\Practika7\Debug\Practika7.MyForm.resources
 F:\C++ projects\MONEY\Practika7\Practika7\Debug\Practika7.MyForm1.resources
 F:\C++ projects\MONEY\Practika7\Practika7\Debug\Practika7.vcxproj.GenerateResource.cache
+D:\Project C++\MONEY\Kate_Melnikova_P7\Practika7\Practika7\Debug\Practika7.vcxprojAssemblyReference.cache
+D:\Project C++\MONEY\Kate_Melnikova_P7\Practika7\Practika7\Debug\Practika7.MyForm.resources
+D:\Project C++\MONEY\Kate_Melnikova_P7\Practika7\Practika7\Debug\Practika7.MyForm1.resources
+D:\Project C++\MONEY\Kate_Melnikova_P7\Practika7\Practika7\Debug\Practika7.vcxproj.GenerateResource.cache

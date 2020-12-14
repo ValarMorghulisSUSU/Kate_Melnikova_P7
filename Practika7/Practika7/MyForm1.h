@@ -47,7 +47,7 @@ namespace Practika7 {
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::RadioButton^ radioButton2;
 	private: System::Windows::Forms::RadioButton^ radioButton1;
-	private: System::Windows::Forms::Button^ button1;
+
 
 	private:
 		/// <summary>
@@ -70,7 +70,6 @@ namespace Practika7 {
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
@@ -153,22 +152,11 @@ namespace Practika7 {
 			this->radioButton1->UseVisualStyleBackColor = true;
 			this->radioButton1->CheckedChanged += gcnew System::EventHandler(this, &MyForm1::radioButton1_CheckedChanged);
 			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(108, 405);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(252, 23);
-			this->button1->TabIndex = 3;
-			this->button1->Text = L"Ѕезвозвратно удалить данные из общей базы\r\n";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm1::button1_Click);
-			// 
 			// MyForm1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(481, 434);
-			this->Controls->Add(this->button1);
+			this->ClientSize = System::Drawing::Size(481, 422);
 			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->dataGridView1);
 			this->Name = L"MyForm1";
@@ -183,25 +171,14 @@ namespace Practika7 {
 #pragma endregion
 
 	private: System::Void MyForm1_Load(System::Object^ sender, System::EventArgs^ e) {
-		radioButton1->Checked = true;
-		A->Look(dataGridView1, 2);
-		button1->Visible == false;
+		this->radioButton1->Checked = true;
+		Look(this->AC, this->dataGridView1);
 	}
 	private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-		A->Look(dataGridView1, 2);
-		this->button1->Text = L"Ѕезвозвратно удалить за€вки из общей базы\r\n";
+		Look(this->AC, this->dataGridView1);
 	}
 	private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-		A->Look(dataGridView1, 3);
-		this->button1->Text = L"¬ернуть все за€вки в статус запроса";
-	}
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (radioButton1->Checked == true) {
-			A->Del(); A->Look(dataGridView1, 2);
-		}
-		if (radioButton2->Checked == true) {
-			A->Add(); A->Look(dataGridView1, 3);
-		}
+		Look(this->DC, this->dataGridView1);
 	}
 };
 }

@@ -1,6 +1,6 @@
 #pragma once
 using namespace System;
-
+using namespace System::IO;
 //класс "садик" (овечает за хранение информации об одном садике)
 ref class Sadik {
 public:
@@ -51,41 +51,24 @@ public:
 		this->stringWhat = sW;
 	}
 	bool isSadik(Sadik^ S) {
-		if (this->intWhat == S->Num)
-	}
-	bool isRaionAndVozrast(Sadik^ S) {
-		if (this->stringWhat->CompareTo(S->Ra) == 0) {
-			switch (intWhat) {
-			case 3:
-				if (S->Colvo_3 != 0)
-					return true;
-				else
-					return false;
-			case 4:
-				if (S->Colvo_4 != 0)
-					return true;
-				else
-					return false;
-			case 5:
-				if (S->Colvo_5 != 0)
-					return true;
-				else
-					return false;
-			case 6:
-				if (S->Colvo_6 != 0)
-					return true;
-				else
-					return false;
-			default:
-				break;
-			}
+		if (intWhat == S->Num) {
+			return true;
 		}
+		else
+			return false;
+	}
+
+	bool isRaion(Sadik^ S) {
+		if (this->stringWhat->CompareTo(S->Ra) == 0) {
+			return true;
+		}
+		else
+			return false;
 	}
 };
 
 void Look(System::Collections::Generic::List <People^>^ LIST, System::Windows::Forms::DataGridView^ DGV) {
 	DGV->RowCount = 1;
-	LIST->Sort();
 	for each (People ^ el in LIST) {
 		DGV->Rows->Add(el->Name, el->Vozrast, el->Raion, el->Num_s);
 	}
@@ -93,38 +76,105 @@ void Look(System::Collections::Generic::List <People^>^ LIST, System::Windows::F
 
 void Look(System::Collections::Generic::List <Sadik^>^ LIST, People ^ P, System::Windows::Forms::DataGridView^ DGV) {
 	DGV->RowCount = 1;
-	LIST->Sort();
 	myPredicate predicate(P->Vozrast, P->Raion);
-	System::Collections::Generic::List <Sadik^>^ LIST2 = gcnew System::Collections::Generic::List <Sadik^>(LIST->FindAll(gcnew Predicate <Sadik^>(predicate, &myPredicate::isRaionAndVozrast)));
+	System::Collections::Generic::List <Sadik^>^ LIST2 = gcnew System::Collections::Generic::List <Sadik^>(LIST->FindAll(gcnew Predicate <Sadik^>(predicate, &myPredicate::isRaion)));
 	for each (Sadik ^ el in LIST2) {
-		switch (P->Vozrast)
-		{
-		case 3:
+		// switch работает некорректно
+		if (P->Vozrast == 3)
 			DGV->Rows->Add(el->Num, el->Colvo_3);
-		case 4:
+		if (P->Vozrast == 4)
 			DGV->Rows->Add(el->Num, el->Colvo_4);
-		case 5:
+		if (P->Vozrast == 5)
 			DGV->Rows->Add(el->Num, el->Colvo_5);
-		case 6:
+		if (P->Vozrast == 6)
 			DGV->Rows->Add(el->Num, el->Colvo_6);
-		default:
-			break;
-		}
 	}
 }
 
-void readFromFile(System::IO::StreamReader^, System::Collections::Generic::List <People^>^) {
-
+void Look(System::Collections::Generic::List <Sadik^>^ LIST, System::Windows::Forms::DataGridView^ DGV) {
+	DGV->RowCount = 1;
+	for each (Sadik ^ el in LIST) {
+		DGV->Rows->Add(el->Ra, el->Num, el->Colvo_3, el->Colvo_4, el->Colvo_5, el->Colvo_6);
+	}
 }
 
-void readFromFile(System::IO::StreamReader^, System::Collections::Generic::List <Sadik^>^) {
+void readFromFile(System::IO::StreamReader^ SR, System::Collections::Generic::List <People^>^ LIST, System::Collections::Generic::Queue <People^>^ QUEUE) {
+	String^ str = gcnew String("");
+	while (str = SR->ReadLine()) {
+		try
+		{
+			People^ p = gcnew People();
+			p->Name = str->Substring(0, str->IndexOf("$"));
+			p->Vozrast = Convert::ToInt32(str->Substring(str->IndexOf("$") + 1, 1));
+			p->Raion = str->Substring(str->IndexOf("#") + 1, str->IndexOf("!") - str->IndexOf("#") - 1);
+			p->Num_s = Convert::ToInt32(str->Substring(str->IndexOf("!") + 1));
+			LIST->Add(p);
+			QUEUE->Enqueue(p);
+		}
+		catch (...)
+		{
+			break;
+		}
+		
+	}
+	SR->Close();
+}
+void readFromFile(System::IO::StreamReader^ SR, System::Collections::Generic::List <People^>^ LIST) {
+	String^ str = gcnew String("");
+	while (str = SR->ReadLine()) {
+		try
+		{
+			People^ p = gcnew People();
+			p->Name = str->Substring(0, str->IndexOf("$"));
+			p->Vozrast = Convert::ToInt32(str->Substring(str->IndexOf("$") + 1, 1));
+			p->Raion = str->Substring(str->IndexOf("#") + 1, str->IndexOf("!") - str->IndexOf("#") - 1);
+			p->Num_s = Convert::ToInt32(str->Substring(str->IndexOf("!") + 1));
+			LIST->Add(p);
+		}
+		catch (...)
+		{
+			break;
+		}
 
+	}
+	SR->Close();
 }
 
-void writeToFile(System::IO::StreamWriter^, System::Collections::Generic::List <People^>^) {
-
+void readFromFile(System::IO::StreamReader^ SR, System::Collections::Generic::List <Sadik^>^ LIST) {
+	String^ str1 = gcnew String("");
+	while (str1 = SR->ReadLine()) {
+		try
+		{
+			Sadik^ p = gcnew Sadik();
+			p->Ra = str1->Substring(0, str1->IndexOf("#"));
+			p->Num = Convert::ToInt32(str1->Substring(str1->IndexOf("#") + 1, str1->IndexOf("@") - str1->IndexOf("#") - 1));
+			p->Colvo_3 = Convert::ToInt32(str1->Substring(str1->IndexOf("@") + 1, str1->IndexOf("$") - str1->IndexOf("@") - 1));
+			p->Colvo_4 = Convert::ToInt32(str1->Substring(str1->IndexOf("$") + 1, str1->IndexOf("*") - str1->IndexOf("$") - 1));
+			p->Colvo_5 = Convert::ToInt32(str1->Substring(str1->IndexOf("*") + 1, str1->IndexOf("!") - str1->IndexOf("*") - 1));
+			p->Colvo_6 = Convert::ToInt32(str1->Substring(str1->IndexOf("!") + 1));
+			LIST->Add(p);
+		}
+		catch (...)
+		{
+			break;
+		}
+		
+	}
+	SR->Close();
 }
 
-void writeToFile(System::IO::StreamWriter^, System::Collections::Generic::List <People^>^) {
+void writeToFile(System::IO::StreamWriter^ SW, System::Collections::Generic::List <People^>^ LIST) {
+	//Малинов$3#Центральный!195
+	for each (People ^ P in LIST) {
+		SW->WriteLine(P->Name + "$" + P->Vozrast + "#" + P->Raion + "!"+ P->Num_s);
+	}
+	SW->Close();
+}
 
+void writeToFile(System::IO::StreamWriter^ SW, System::Collections::Generic::List <Sadik^>^ LIST) {
+	//Ленинский#124@11$10 * 6!3
+	for each (Sadik ^ S in LIST) {
+		SW->WriteLine(S->Ra + "#" + S->Num + "@" + S->Colvo_3 + "$" + S->Colvo_4 + "*" + S->Colvo_5 + "!" + S->Colvo_6);
+	}
+	SW->Close();
 }

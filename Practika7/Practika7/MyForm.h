@@ -24,6 +24,7 @@ namespace Practika7 {
 		System::Collections::Generic::List <People^>^ AllowChildren;
 		System::Collections::Generic::List <Sadik^>^ ListSadik;
 		System::Collections::Generic::List <People^>^ DenyChildren;
+		People^ Child;
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::ComboBox^ comboBox4;
 	private: System::Windows::Forms::ComboBox^ comboBox5;
@@ -39,6 +40,13 @@ namespace Practika7 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::RadioButton^ radioButton1;
 	private: System::Windows::Forms::RadioButton^ radioButton2;
+	private: System::Windows::Forms::DataGridView^ dataGridView3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column8;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column9;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column10;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column11;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
 	private: System::Windows::Forms::GroupBox^ groupBox3;
 	public:
 		MyForm(void)
@@ -47,11 +55,12 @@ namespace Practika7 {
 			//
 			//TODO: добавьте код конструктора
 			//
+			this->Child = gcnew People;
 			this->QueueChildren = gcnew System::Collections::Generic::Queue <People^>(1);
+			this->ListSadik = gcnew System::Collections::Generic::List <Sadik^>();
 			this->ListChildren = gcnew System::Collections::Generic::List <People^>();
 			this->AllowChildren = gcnew System::Collections::Generic::List <People^>();
 			this->DenyChildren = gcnew System::Collections::Generic::List <People^>();
-			this->C = gcnew MyForm1(this->AllowChildren, this->DenyChildren);
 		}
 
 	protected:
@@ -83,7 +92,7 @@ namespace Practika7 {
 	private: System::Windows::Forms::TextBox^ textBox1;
 	private: System::Windows::Forms::Label^ label18;
 	private: System::Windows::Forms::Label^ label29;
-	private: System::Windows::Forms::Button^ button4;
+
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::DataGridView^ dataGridView2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
@@ -119,7 +128,6 @@ namespace Practika7 {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -144,6 +152,13 @@ namespace Practika7 {
 			this->базаToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->dataGridView3 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column10 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column11 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column12 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->radioButton1 = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButton2 = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBox1->SuspendLayout();
@@ -152,6 +167,7 @@ namespace Practika7 {
 			this->groupBox2->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			this->groupBox3->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// groupBox1
@@ -165,7 +181,6 @@ namespace Practika7 {
 			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Controls->Add(this->textBox2);
 			this->groupBox1->Controls->Add(this->label6);
-			this->groupBox1->Controls->Add(this->button4);
 			this->groupBox1->Controls->Add(this->button3);
 			this->groupBox1->Controls->Add(this->dataGridView2);
 			this->groupBox1->Controls->Add(this->label14);
@@ -273,23 +288,11 @@ namespace Practika7 {
 			this->label6->TabIndex = 28;
 			this->label6->Text = L"Фамилия";
 			// 
-			// button4
-			// 
-			this->button4->BackColor = System::Drawing::Color::MintCream;
-			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button4->Location = System::Drawing::Point(249, 219);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(211, 28);
-			this->button4->TabIndex = 26;
-			this->button4->Text = L"Перенаправить ребенка";
-			this->button4->UseVisualStyleBackColor = false;
-			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
-			// 
 			// button3
 			// 
 			this->button3->BackColor = System::Drawing::Color::MintCream;
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button3->Location = System::Drawing::Point(249, 175);
+			this->button3->Location = System::Drawing::Point(249, 189);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(211, 28);
 			this->button3->TabIndex = 25;
@@ -452,7 +455,6 @@ namespace Practika7 {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(335, 29);
 			this->button1->TabIndex = 22;
-			this->button1->Text = L"text";
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -510,6 +512,7 @@ namespace Practika7 {
 			// 
 			// groupBox3
 			// 
+			this->groupBox3->Controls->Add(this->dataGridView3);
 			this->groupBox3->Controls->Add(this->dataGridView1);
 			this->groupBox3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
@@ -519,6 +522,54 @@ namespace Practika7 {
 			this->groupBox3->TabIndex = 5;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Очередь";
+			// 
+			// dataGridView3
+			// 
+			this->dataGridView3->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView3->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+				this->Column4,
+					this->Column8, this->Column9, this->Column10, this->Column11, this->Column12
+			});
+			this->dataGridView3->Location = System::Drawing::Point(6, 16);
+			this->dataGridView3->Name = L"dataGridView3";
+			this->dataGridView3->Size = System::Drawing::Size(469, 361);
+			this->dataGridView3->TabIndex = 1;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Район";
+			this->Column4->Name = L"Column4";
+			this->Column4->ReadOnly = true;
+			// 
+			// Column8
+			// 
+			this->Column8->HeaderText = L"№ садика";
+			this->Column8->Name = L"Column8";
+			this->Column8->ReadOnly = true;
+			// 
+			// Column9
+			// 
+			this->Column9->HeaderText = L"Места для 3-х лет";
+			this->Column9->Name = L"Column9";
+			this->Column9->ReadOnly = true;
+			// 
+			// Column10
+			// 
+			this->Column10->HeaderText = L"Места для 4-х лет";
+			this->Column10->Name = L"Column10";
+			this->Column10->ReadOnly = true;
+			// 
+			// Column11
+			// 
+			this->Column11->HeaderText = L"Места для 5-и лет";
+			this->Column11->Name = L"Column11";
+			this->Column11->ReadOnly = true;
+			// 
+			// Column12
+			// 
+			this->Column12->HeaderText = L"Места для 6-и лет";
+			this->Column12->Name = L"Column12";
+			this->Column12->ReadOnly = true;
 			// 
 			// radioButton1
 			// 
@@ -573,6 +624,7 @@ namespace Practika7 {
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->groupBox3->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -583,125 +635,111 @@ namespace Practika7 {
 		try
 		{
 			People^ Tmp = gcnew People(this->textBox1->Text, Convert::ToInt16(this->comboBox3->Text),
-				this->comboBox2->Text, Convert::ToInt32(this->comboBox2->Text);
+				this->comboBox1->Text, Convert::ToInt32(this->comboBox2->Text));
 			this->ListChildren->Add(Tmp);
 			this->QueueChildren->Enqueue(Tmp);
-			Look(ListChildren, dataGridView1);
+			Look(this->ListChildren, this->dataGridView1);
 		}
 		catch (...)
 		{
 			MessageBox::Show("Данные введены неверно, либо не полностью, проверьте.", "Ошибка", 
 				MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+		this->textBox1->Text = "";
+		this->comboBox3->SelectedIndex = -1;
+		this->comboBox1->SelectedIndex = -1;
+		this->comboBox2->SelectedIndex = -1;
 	}	
 	//Рассмотреть заявку
-	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-		/*if (B->Del_m(A->Get_B(A->H())->Num, A->Get_B(A->H())->V)) {
-			People^ p = gcnew People();
-
-			A->Pop(p);
-			p->ST = "Одобрено";
-			A->Push(p);
-
-			A->Look(dataGridView1, 1);
-			MyForm_Sadic();
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {		
+		myPredicate predicate(this->Child->Num_s, Convert::ToString(this->Child->Vozrast));
+		int index = ListSadik->FindIndex(gcnew Predicate <Sadik^>(predicate, &myPredicate::isSadik));
+		if (index != -1) {
+			if(this->Child->Vozrast == 3)
+				this->ListSadik[index]->Colvo_3--;
+			if (this->Child->Vozrast == 4)
+				this->ListSadik[index]->Colvo_4--;
+			if (this->Child->Vozrast == 5)
+				this->ListSadik[index]->Colvo_5--;
+			if (this->Child->Vozrast == 6)
+				this->ListSadik[index]->Colvo_6--;
+			this->AllowChildren->Add(this->Child);
+			this->ListChildren->Remove(this->Child);
+			this->QueueChildren->Dequeue();
+			MessageBox::Show("Заявка одобрена.", "Обработка запроса.", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
-
 		else {
-			MessageBox::Show("Заявка не может быть одобрена. Так как для данной возрастной группы места закончились.","Ошибка запроса.", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			button4_Click(sender, e);
-		}*/
-
-
-
+			MessageBox::Show("Заявка не может быть одобрена. Так как для данной возрастной группы места закончились.", "Ошибка запроса.", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			this->DenyChildren->Add(Child);
+			this->ListChildren->Remove(this->Child);
+			this->QueueChildren->Dequeue();
+		}
+		this->Child = this->QueueChildren->Peek();
+		this->textBox2->Text = this->Child->Name;
+		this->comboBox6->Text = this->Child->Raion;
+		this->comboBox4->Text = Convert::ToString(this->Child->Vozrast);
+		this->comboBox5->Text = Convert::ToString(this->Child->Num_s);
+		Look(this->ListSadik, this->Child, this->dataGridView2);
+		Look(this->ListChildren, this->dataGridView1);
 	}
-	//Перенаправить ребенка
-	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-		People^ p = gcnew People();
-		A->Pop(p);
-		p->ST = "Отказано";
-		A->Push(p);
 
-		A->Look(dataGridView1, 1);
-		MyForm_Sadic();
-	}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		int t = comboBox1->SelectedIndex;
-		if (t == 0) {
+		if (this->comboBox1->SelectedIndex == 0) {
 			this->comboBox2->Items->Clear();
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"124", L"257", L"29", L"436", L"75", L"315" });
 		}
-		if (t == 1) {
+		if (this->comboBox1->SelectedIndex == 1) {
 			this->comboBox2->Items->Clear();
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"371", L"5", L"446", L"55", L"8", L"68" });
 		}
-		if (t == 2) {
+		if (this->comboBox1->SelectedIndex == 2) {
 			this->comboBox2->Items->Clear();
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"195", L"343", L"52", L"307", L"39", L"181" });
 		}
-		if (t == 3) {
+		if (this->comboBox1->SelectedIndex == 3) {
 			this->comboBox2->Items->Clear();
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"435", L"88", L"28", L"57", L"253", L"166" });
 		}
-		if (t == 4) {
+		if (this->comboBox1->SelectedIndex == 4) {
 			this->comboBox2->Items->Clear();
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"390", L"310", L"270", L"44", L"337", L"57" });
 		}
-		if (t == 5) {
+		if (this->comboBox1->SelectedIndex == 5) {
 			this->comboBox2->Items->Clear();
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"3", L"244", L"80", L"14", L"272", L"183" });
 		}
-		if (t == 6) {
+		if (this->comboBox1->SelectedIndex == 6) {
 			this->comboBox2->Items->Clear();
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"76", L"59", L"120", L"7", L"84", L"66" });
 		}
 	}
 	private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-		String^ toWrite = A->File();
-		String^ toWrite1 = B->File();
-		File::WriteAllText(Directory::GetCurrentDirectory() + "\\База.txt", toWrite);
-		File::WriteAllText(Directory::GetCurrentDirectory() + "\\Садики.txt", toWrite1);
+		StreamWriter ^ SW = gcnew StreamWriter(Directory::GetCurrentDirectory() + "\\База.txt");
+		writeToFile(SW, this->ListChildren);
+		SW = gcnew StreamWriter(Directory::GetCurrentDirectory() + "\\Садики.txt");
+		writeToFile(SW, this->ListSadik);
+		SW = gcnew StreamWriter(Directory::GetCurrentDirectory() + "\\Одобрено.txt");
+		writeToFile(SW, this->AllowChildren);
+		SW = gcnew StreamWriter(Directory::GetCurrentDirectory() + "\\Отказано.txt");
+		writeToFile(SW, this->DenyChildren);
 	}
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		StreamReader^ SR = gcnew StreamReader("База.txt");
-		String^ str = gcnew String("");
-		while (str = SR->ReadLine()) {
-			
-			People^ p = gcnew People();
-			p->N = str->Substring(0, str->IndexOf("$"));
-			p->V = Convert::ToInt32(str->Substring(str->IndexOf("$") + 1,1));
-			p->R = str->Substring(str->IndexOf("*") + 1, str->IndexOf("!") - str->IndexOf("*") - 1);
-			p->Num = Convert::ToInt32(str->Substring(str->IndexOf("!") + 1, str->IndexOf("@") - str->IndexOf("!") - 1));
-			p->ST = str->Substring(str->IndexOf("@") + 1);
-			A->Push(p);
-		}
-		SR->Close();
-		A->Look(dataGridView1, 1);
-
-		StreamReader^ SP = gcnew StreamReader("Садики.txt");
-		String^ str1 = gcnew String("");
-		while (str1 = SP->ReadLine()) {
-
-			Sadik^ p = gcnew Sadik();
-			p->R= str1->Substring(0, str1->IndexOf("#"));
-			p->N = Convert::ToInt32(str1->Substring(str1->IndexOf("#") + 1, str1->IndexOf("@") - str1->IndexOf("#") - 1));
-			p->C_3 = Convert::ToInt32(str1->Substring(str1->IndexOf("@") + 1, str1->IndexOf("$") - str1->IndexOf("@") - 1));
-			p->C_4 = Convert::ToInt32(str1->Substring(str1->IndexOf("$") + 1, str1->IndexOf("*") - str1->IndexOf("$") - 1));
-			p->C_5 = Convert::ToInt32(str1->Substring(str1->IndexOf("*") + 1, str1->IndexOf("!") - str1->IndexOf("*") - 1));
-			p->C_6 = Convert::ToInt32(str1->Substring(str1->IndexOf("!") + 1));
-			B->Add(p);
-		}
-		SP->Close();
-		MyForm_Sadic();
+		StreamReader^ SR = gcnew StreamReader(Directory::GetCurrentDirectory() + "\\База.txt");
+		readFromFile(SR, this->ListChildren, this->QueueChildren);
+		SR = gcnew StreamReader(Directory::GetCurrentDirectory() + "\\Садики.txt");
+		readFromFile(SR, this->ListSadik);
+		SR = gcnew StreamReader(Directory::GetCurrentDirectory() + "\\Одобрено.txt");
+		readFromFile(SR, this->AllowChildren);
+		SR = gcnew StreamReader(Directory::GetCurrentDirectory() + "\\Отказано.txt");
+		readFromFile(SR, this->DenyChildren);
+		this->groupBox2->Enabled = false;
+		this->groupBox1->Enabled = false;
+		//MyForm_Sadic();
 	}
 	private: System::Void базаToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		C->ShowDialog();
+		this->C = gcnew MyForm1(this->AllowChildren, this->DenyChildren);
+		this->C->ShowDialog();
 	}
-	void MyForm_Sadic() {
-		label2->Text = A->Get_B(A->H())->R;
-		B->Poisk(A->Get_B(A->H())->R, A->Get_B(A->H())->V,dataGridView2);
-	}
-
 
 private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (this->radioButton1->Checked) {
@@ -712,18 +750,27 @@ private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System
 		this->comboBox5->Text = "";
 		this->groupBox1->Enabled = false;
 		this->button1->Text = "Подать заявку";
+		this->groupBox2->Enabled = true;
+		this->dataGridView1->Hide();
+		this->dataGridView3->Show();
+		Look(this->ListSadik, this->dataGridView3);
 	}
 }
 private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (this->radioButton2->Checked) {
-		People^ Tmp = QueueChildren->Peek();
-		this->textBox2->Text = Tmp->Name;
-		this->comboBox6->Text = Tmp->Raion;
-		this->comboBox4->Text = Convert::ToString(Tmp->Vozrast);
-		this->comboBox5->Text = Convert::ToString(Tmp->Num_s);
-		Look(this->ListSadik, Tmp, this->dataGridView2);
-		this->groupBox1->Enabled = false;
+		this->Child = this->QueueChildren->Peek();
+		this->textBox2->Text = this->Child->Name;
+		this->comboBox6->Text = this->Child->Raion;
+		this->comboBox4->Text = Convert::ToString(this->Child->Vozrast);
+		this->comboBox5->Text = Convert::ToString(this->Child->Num_s);
+		Look(this->ListSadik, this->Child, this->dataGridView2);
+		this->groupBox1->Enabled = true;
+		this->groupBox2->Enabled = true;
 		this->button1->Text = "Добавить заявку";
+		this->dataGridView3->Enabled = false;
+		this->dataGridView3->Hide();
+		this->dataGridView1->Show();
+		Look(this->ListChildren, this->dataGridView1);
 	}
 }
 };
