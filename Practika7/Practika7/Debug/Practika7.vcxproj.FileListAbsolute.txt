@@ -17,3 +17,7 @@ D:\Project C++\MONEY\Kate_Melnikova_P7\Practika7\Practika7\Debug\Practika7.vcxpr
 D:\Project C++\MONEY\Kate_Melnikova_P7\Practika7\Practika7\Debug\Practika7.MyForm.resources
 D:\Project C++\MONEY\Kate_Melnikova_P7\Practika7\Practika7\Debug\Practika7.MyForm1.resources
 D:\Project C++\MONEY\Kate_Melnikova_P7\Practika7\Practika7\Debug\Practika7.vcxproj.GenerateResource.cache
+F:\C++ projects\MONEY\Kate_Melnikova_P7\Practika7\Practika7\Debug\Practika7.vcxprojAssemblyReference.cache
+F:\C++ projects\MONEY\Kate_Melnikova_P7\Practika7\Practika7\Debug\Practika7.MyForm.resources
+F:\C++ projects\MONEY\Kate_Melnikova_P7\Practika7\Practika7\Debug\Practika7.MyForm1.resources
+F:\C++ projects\MONEY\Kate_Melnikova_P7\Practika7\Practika7\Debug\Practika7.vcxproj.GenerateResource.cache

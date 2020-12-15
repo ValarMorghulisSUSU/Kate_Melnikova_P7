@@ -767,7 +767,6 @@ private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System
 		this->groupBox1->Enabled = true;
 		this->groupBox2->Enabled = true;
 		this->button1->Text = "Добавить заявку";
-		this->dataGridView3->Enabled = false;
 		this->dataGridView3->Hide();
 		this->dataGridView1->Show();
 		Look(this->ListChildren, this->dataGridView1);
