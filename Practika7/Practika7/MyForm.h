@@ -26,10 +26,10 @@ namespace Practika7 {
 		System::Collections::Generic::List <People^>^ DenyChildren;
 		People^ Child;
 	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::ComboBox^ comboBox4;
+
 	private: System::Windows::Forms::ComboBox^ comboBox5;
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::ComboBox^ comboBox6;
+
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::TextBox^ textBox2;
@@ -47,6 +47,10 @@ namespace Practika7 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column10;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column11;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column12;
+	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ textBox4;
+
+
 	private: System::Windows::Forms::GroupBox^ groupBox3;
 	public:
 		MyForm(void)
@@ -119,11 +123,11 @@ namespace Practika7 {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->comboBox4 = (gcnew System::Windows::Forms::ComboBox());
 			this->comboBox5 = (gcnew System::Windows::Forms::ComboBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->comboBox6 = (gcnew System::Windows::Forms::ComboBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
@@ -172,11 +176,11 @@ namespace Practika7 {
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->textBox4);
+			this->groupBox1->Controls->Add(this->textBox3);
 			this->groupBox1->Controls->Add(this->label7);
-			this->groupBox1->Controls->Add(this->comboBox4);
 			this->groupBox1->Controls->Add(this->comboBox5);
 			this->groupBox1->Controls->Add(this->label3);
-			this->groupBox1->Controls->Add(this->comboBox6);
 			this->groupBox1->Controls->Add(this->label4);
 			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Controls->Add(this->textBox2);
@@ -194,6 +198,27 @@ namespace Practika7 {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Вакантные места";
 			// 
+			// textBox4
+			// 
+			this->textBox4->BackColor = System::Drawing::Color::White;
+			this->textBox4->ForeColor = System::Drawing::Color::Black;
+			this->textBox4->Location = System::Drawing::Point(320, 73);
+			this->textBox4->Name = L"textBox4";
+			this->textBox4->ReadOnly = true;
+			this->textBox4->Size = System::Drawing::Size(140, 23);
+			this->textBox4->TabIndex = 38;
+			this->textBox4->TextChanged += gcnew System::EventHandler(this, &MyForm::textBox4_TextChanged);
+			// 
+			// textBox3
+			// 
+			this->textBox3->BackColor = System::Drawing::Color::White;
+			this->textBox3->ForeColor = System::Drawing::Color::Black;
+			this->textBox3->Location = System::Drawing::Point(320, 104);
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->ReadOnly = true;
+			this->textBox3->Size = System::Drawing::Size(140, 23);
+			this->textBox3->TabIndex = 36;
+			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
@@ -207,22 +232,16 @@ namespace Practika7 {
 			this->label7->TabIndex = 35;
 			this->label7->Text = L"        Ребенок из очереди         ";
 			// 
-			// comboBox4
-			// 
-			this->comboBox4->FormattingEnabled = true;
-			this->comboBox4->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"3", L"4", L"5", L"6" });
-			this->comboBox4->Location = System::Drawing::Point(355, 101);
-			this->comboBox4->Name = L"comboBox4";
-			this->comboBox4->Size = System::Drawing::Size(105, 25);
-			this->comboBox4->TabIndex = 34;
-			// 
 			// comboBox5
 			// 
+			this->comboBox5->BackColor = System::Drawing::Color::White;
+			this->comboBox5->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBox5->ForeColor = System::Drawing::Color::Black;
 			this->comboBox5->FormattingEnabled = true;
 			this->comboBox5->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"124", L"257", L"29", L"436", L"75", L"315" });
-			this->comboBox5->Location = System::Drawing::Point(355, 132);
+			this->comboBox5->Location = System::Drawing::Point(320, 132);
 			this->comboBox5->Name = L"comboBox5";
-			this->comboBox5->Size = System::Drawing::Size(105, 25);
+			this->comboBox5->Size = System::Drawing::Size(140, 25);
 			this->comboBox5->TabIndex = 33;
 			// 
 			// label3
@@ -230,30 +249,18 @@ namespace Practika7 {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(288, 73);
+			this->label3->Location = System::Drawing::Point(264, 73);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(50, 17);
 			this->label3->TabIndex = 32;
 			this->label3->Text = L"Район";
-			// 
-			// comboBox6
-			// 
-			this->comboBox6->FormattingEnabled = true;
-			this->comboBox6->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
-				L"Ленинский", L"Советский", L"Центральный", L"Калининский",
-					L"Курчатовский", L"Металлургический", L"Тракторозавоский"
-			});
-			this->comboBox6->Location = System::Drawing::Point(355, 70);
-			this->comboBox6->Name = L"comboBox6";
-			this->comboBox6->Size = System::Drawing::Size(105, 25);
-			this->comboBox6->TabIndex = 27;
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label4->Location = System::Drawing::Point(263, 135);
+			this->label4->Location = System::Drawing::Point(239, 135);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(75, 17);
 			this->label4->TabIndex = 31;
@@ -264,7 +271,7 @@ namespace Practika7 {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label5->Location = System::Drawing::Point(277, 104);
+			this->label5->Location = System::Drawing::Point(253, 104);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(61, 17);
 			this->label5->TabIndex = 30;
@@ -272,9 +279,12 @@ namespace Practika7 {
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(355, 42);
+			this->textBox2->BackColor = System::Drawing::Color::White;
+			this->textBox2->ForeColor = System::Drawing::Color::Black;
+			this->textBox2->Location = System::Drawing::Point(320, 42);
 			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(105, 23);
+			this->textBox2->ReadOnly = true;
+			this->textBox2->Size = System::Drawing::Size(140, 23);
 			this->textBox2->TabIndex = 29;
 			// 
 			// label6
@@ -282,7 +292,7 @@ namespace Practika7 {
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label6->Location = System::Drawing::Point(270, 45);
+			this->label6->Location = System::Drawing::Point(246, 45);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(68, 17);
 			this->label6->TabIndex = 28;
@@ -410,6 +420,9 @@ namespace Practika7 {
 			// 
 			// comboBox3
 			// 
+			this->comboBox3->BackColor = System::Drawing::Color::White;
+			this->comboBox3->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBox3->ForeColor = System::Drawing::Color::Black;
 			this->comboBox3->FormattingEnabled = true;
 			this->comboBox3->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"3", L"4", L"5", L"6" });
 			this->comboBox3->Location = System::Drawing::Point(275, 22);
@@ -419,6 +432,9 @@ namespace Practika7 {
 			// 
 			// comboBox2
 			// 
+			this->comboBox2->BackColor = System::Drawing::Color::White;
+			this->comboBox2->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBox2->ForeColor = System::Drawing::Color::Black;
 			this->comboBox2->FormattingEnabled = true;
 			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"124", L"257", L"29", L"436", L"75", L"315" });
 			this->comboBox2->Location = System::Drawing::Point(275, 49);
@@ -437,6 +453,9 @@ namespace Practika7 {
 			// 
 			// comboBox1
 			// 
+			this->comboBox1->BackColor = System::Drawing::Color::White;
+			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBox1->ForeColor = System::Drawing::Color::Black;
 			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
 				L"Ленинский", L"Советский", L"Центральный", L"Калининский",
@@ -478,6 +497,8 @@ namespace Practika7 {
 			// 
 			// textBox1
 			// 
+			this->textBox1->BackColor = System::Drawing::Color::White;
+			this->textBox1->ForeColor = System::Drawing::Color::Black;
 			this->textBox1->Location = System::Drawing::Point(83, 24);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(105, 23);
@@ -651,9 +672,10 @@ namespace Practika7 {
 		this->comboBox2->SelectedIndex = -1;
 	}	
 	//Рассмотреть заявку
-	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {		
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Child->Num_s = Convert::ToInt16(this->comboBox5->Text);
 		myPredicate predicate(this->Child->Num_s, Convert::ToString(this->Child->Vozrast));
-		int index = ListSadik->FindIndex(gcnew Predicate <Sadik^>(predicate, &myPredicate::isSadik));
+		int index = ListSadik->FindIndex(gcnew Predicate <Sadik^>(predicate, &myPredicate::isSadikNotEmpty));
 		if (index != -1) {
 			if(this->Child->Vozrast == 3)
 				this->ListSadik[index]->Colvo_3--;
@@ -669,15 +691,20 @@ namespace Practika7 {
 			MessageBox::Show("Заявка одобрена.", "Обработка запроса.", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 		else {
-			MessageBox::Show("Заявка не может быть одобрена. Так как для данной возрастной группы места закончились.", "Ошибка запроса.", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			this->DenyChildren->Add(Child);
-			this->ListChildren->Remove(this->Child);
-			this->QueueChildren->Dequeue();
+			System::Windows::Forms::DialogResult Res = MessageBox::Show(String::Format("В садике № {0} нет свободных мест в данной возрастной группе\nПеренаправить ребенка в другой садик?", this->Child->Num_s), "Обработка запроса.", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+			if (Res == System::Windows::Forms::DialogResult::Yes) {
+				this->comboBox5->Focus();
+			}
+			else {
+				this->DenyChildren->Add(Child);
+				this->ListChildren->Remove(this->Child);
+				this->QueueChildren->Dequeue();
+			}
 		}
 		this->Child = this->QueueChildren->Peek();
 		this->textBox2->Text = this->Child->Name;
-		this->comboBox6->Text = this->Child->Raion;
-		this->comboBox4->Text = Convert::ToString(this->Child->Vozrast);
+		this->textBox4->Text = this->Child->Raion;
+		this->textBox3->Text = Convert::ToString(this->Child->Vozrast);
 		this->comboBox5->Text = Convert::ToString(this->Child->Num_s);
 		Look(this->ListSadik, this->Child, this->dataGridView2);
 		Look(this->ListChildren, this->dataGridView1);
@@ -725,7 +752,11 @@ namespace Practika7 {
 	}
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		StreamReader^ SR = gcnew StreamReader(Directory::GetCurrentDirectory() + "\\База.txt");
-		readFromFile(SR, this->ListChildren, this->QueueChildren);
+		readFromFile(SR, this->ListChildren);
+		for each (People ^p in this->ListChildren)
+		{
+			this->QueueChildren->Enqueue(p);
+		}
 		SR = gcnew StreamReader(Directory::GetCurrentDirectory() + "\\Садики.txt");
 		readFromFile(SR, this->ListSadik);
 		SR = gcnew StreamReader(Directory::GetCurrentDirectory() + "\\Одобрено.txt");
@@ -733,8 +764,7 @@ namespace Practika7 {
 		SR = gcnew StreamReader(Directory::GetCurrentDirectory() + "\\Отказано.txt");
 		readFromFile(SR, this->DenyChildren);
 		this->groupBox2->Enabled = false;
-		this->groupBox1->Enabled = false;
-		//MyForm_Sadic();
+		this->groupBox1->Hide();
 	}
 	private: System::Void базаToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->C = gcnew MyForm1(this->AllowChildren, this->DenyChildren);
@@ -745,14 +775,16 @@ private: System::Void radioButton1_CheckedChanged(System::Object^ sender, System
 	if (this->radioButton1->Checked) {
 		this->textBox2->Text = "";
 		this->dataGridView2->Rows->Clear();
-		this->comboBox6->Text= "";
-		this->comboBox4->Text = "";
+		this->textBox4->Text= "";
+		this->textBox3->Text = "";
 		this->comboBox5->Text = "";
-		this->groupBox1->Enabled = false;
+		this->groupBox1->Hide();
 		this->button1->Text = "Подать заявку";
 		this->groupBox2->Enabled = true;
+		this->dataGridView1->Rows->Clear();
 		this->dataGridView1->Hide();
 		this->dataGridView3->Show();
+		this->comboBox5->SelectedIndex = -1;
 		Look(this->ListSadik, this->dataGridView3);
 	}
 }
@@ -760,16 +792,48 @@ private: System::Void radioButton2_CheckedChanged(System::Object^ sender, System
 	if (this->radioButton2->Checked) {
 		this->Child = this->QueueChildren->Peek();
 		this->textBox2->Text = this->Child->Name;
-		this->comboBox6->Text = this->Child->Raion;
-		this->comboBox4->Text = Convert::ToString(this->Child->Vozrast);
+		this->textBox4->Text = this->Child->Raion;
+		this->textBox3->Text = Convert::ToString(this->Child->Vozrast);
 		this->comboBox5->Text = Convert::ToString(this->Child->Num_s);
 		Look(this->ListSadik, this->Child, this->dataGridView2);
-		this->groupBox1->Enabled = true;
+		this->groupBox1->Show();
 		this->groupBox2->Enabled = true;
 		this->button1->Text = "Добавить заявку";
 		this->dataGridView3->Hide();
+		this->dataGridView3->Rows->Clear();
 		this->dataGridView1->Show();
 		Look(this->ListChildren, this->dataGridView1);
+	}
+}
+
+private: System::Void textBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (this->textBox4->Text->CompareTo("Ленинский") == 0) {
+		this->comboBox5->Items->Clear();
+		this->comboBox5->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"124", L"257", L"29", L"436", L"75", L"315" });
+	}
+	if (this->textBox4->Text->CompareTo("Советский") == 0) {
+		this->comboBox5->Items->Clear();
+		this->comboBox5->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"371", L"5", L"446", L"55", L"8", L"68" });
+	}
+	if (this->textBox4->Text->CompareTo("Центральный") == 0) {
+		this->comboBox5->Items->Clear();
+		this->comboBox5->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"195", L"343", L"52", L"307", L"39", L"181" });
+	}
+	if (this->textBox4->Text->CompareTo("Калининский") == 0) {
+		this->comboBox5->Items->Clear();
+		this->comboBox5->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"435", L"88", L"28", L"57", L"253", L"166" });
+	}
+	if (this->textBox4->Text->CompareTo("Курчатовский") == 0) {
+		this->comboBox5->Items->Clear();
+		this->comboBox5->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"390", L"310", L"270", L"44", L"337", L"57" });
+	}
+	if (this->textBox4->Text->CompareTo("Металлургический") == 0) {
+		this->comboBox5->Items->Clear();
+		this->comboBox5->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"3", L"244", L"80", L"14", L"272", L"183" });
+	}
+	if (this->textBox4->Text->CompareTo("Тракторозавоский") == 0) {
+		this->comboBox5->Items->Clear();
+		this->comboBox5->Items->AddRange(gcnew cli::array< System::Object^  >(6) { L"76", L"59", L"120", L"7", L"84", L"66" });
 	}
 }
 };

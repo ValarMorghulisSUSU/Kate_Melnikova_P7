@@ -46,13 +46,58 @@ public value class myPredicate {
 	int intWhat;
 	String^ stringWhat;
 public:
+	myPredicate(int iW) {
+		this->intWhat = iW;
+		this->stringWhat = nullptr;
+	}
+	myPredicate(String^ sW) {
+		this->intWhat = 0;
+		this->stringWhat = sW;
+	}
 	myPredicate(int iW, String^ sW) {
 		this->intWhat = iW;
 		this->stringWhat = sW;
 	}
 	bool isSadik(Sadik^ S) {
-		if (intWhat == S->Num) {
+		if (this->intWhat == S->Num) {
 			return true;
+		}
+		else
+			return false;
+	}
+
+	bool isSadikNotEmpty(Sadik^ S) {
+		if (intWhat == S->Num) {
+			/*if (Convert::ToInt16(this->stringWhat) == 3)
+				if (S->Colvo_3 != 0)
+					return true;
+
+			return true;*/
+			int tmp = Convert::ToInt16(this->stringWhat);
+			switch (tmp) {
+			case 3:
+				if (S->Colvo_3 != 0)
+					return true;
+				else
+					return false;
+			case 4:
+				if (S->Colvo_4 != 0)
+					return true;
+				else
+					return false;
+			case 5:
+				if (S->Colvo_5 != 0)
+					return true;
+				else
+					return false;
+			case 6:
+				if (S->Colvo_6 != 0)
+					return true;
+				else
+					return false;
+			default:
+				break;
+			}
 		}
 		else
 			return false;
@@ -76,7 +121,7 @@ void Look(System::Collections::Generic::List <People^>^ LIST, System::Windows::F
 
 void Look(System::Collections::Generic::List <Sadik^>^ LIST, People ^ P, System::Windows::Forms::DataGridView^ DGV) {
 	DGV->RowCount = 1;
-	myPredicate predicate(P->Vozrast, P->Raion);
+	myPredicate predicate(P->Raion);
 	System::Collections::Generic::List <Sadik^>^ LIST2 = gcnew System::Collections::Generic::List <Sadik^>(LIST->FindAll(gcnew Predicate <Sadik^>(predicate, &myPredicate::isRaion)));
 	for each (Sadik ^ el in LIST2) {
 		// switch работает некорректно
@@ -98,27 +143,7 @@ void Look(System::Collections::Generic::List <Sadik^>^ LIST, System::Windows::Fo
 	}
 }
 
-void readFromFile(System::IO::StreamReader^ SR, System::Collections::Generic::List <People^>^ LIST, System::Collections::Generic::Queue <People^>^ QUEUE) {
-	String^ str = gcnew String("");
-	while (str = SR->ReadLine()) {
-		try
-		{
-			People^ p = gcnew People();
-			p->Name = str->Substring(0, str->IndexOf("$"));
-			p->Vozrast = Convert::ToInt32(str->Substring(str->IndexOf("$") + 1, 1));
-			p->Raion = str->Substring(str->IndexOf("#") + 1, str->IndexOf("!") - str->IndexOf("#") - 1);
-			p->Num_s = Convert::ToInt32(str->Substring(str->IndexOf("!") + 1));
-			LIST->Add(p);
-			QUEUE->Enqueue(p);
-		}
-		catch (...)
-		{
-			break;
-		}
-		
-	}
-	SR->Close();
-}
+
 void readFromFile(System::IO::StreamReader^ SR, System::Collections::Generic::List <People^>^ LIST) {
 	String^ str = gcnew String("");
 	while (str = SR->ReadLine()) {
@@ -164,7 +189,6 @@ void readFromFile(System::IO::StreamReader^ SR, System::Collections::Generic::Li
 }
 
 void writeToFile(System::IO::StreamWriter^ SW, System::Collections::Generic::List <People^>^ LIST) {
-	//Малинов$3#Центральный!195
 	for each (People ^ P in LIST) {
 		SW->WriteLine(P->Name + "$" + P->Vozrast + "#" + P->Raion + "!"+ P->Num_s);
 	}
@@ -172,7 +196,6 @@ void writeToFile(System::IO::StreamWriter^ SW, System::Collections::Generic::Lis
 }
 
 void writeToFile(System::IO::StreamWriter^ SW, System::Collections::Generic::List <Sadik^>^ LIST) {
-	//Ленинский#124@11$10 * 6!3
 	for each (Sadik ^ S in LIST) {
 		SW->WriteLine(S->Ra + "#" + S->Num + "@" + S->Colvo_3 + "$" + S->Colvo_4 + "*" + S->Colvo_5 + "!" + S->Colvo_6);
 	}
